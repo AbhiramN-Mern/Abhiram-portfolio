@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base Reset & Root ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --terminal-bg: #0b0e13;
+  --terminal-card: #0f1419;
+  --terminal-border: #1e2d3d;
+  --terminal-green: #10b981;
+  --terminal-green-dim: #059669;
+  --terminal-text: #e2e8f0;
+  --terminal-muted: #64748b;
+  --terminal-comment: #475569;
+  --terminal-accent: #38bdf8;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #e2e8f0;
+}
+
+code, pre, .mono {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0e13;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2d3d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3d50;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(16, 185, 129, 0.25);
+  color: #e2e8f0;
+}
+
+/* ===== Focus Styles ===== */
+:focus-visible {
+  outline: 2px solid var(--terminal-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===== Section Label (e.g., 01 // ABOUT) ===== */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--terminal-green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ===== Card base ===== */
+.card {
+  background-color: var(--terminal-card);
+  border: 1px solid var(--terminal-border);
+  border-radius: 8px;
+}
+
+/* ===== Skill badge ===== */
+.skill-badge {
+  background-color: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.skill-badge:hover {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #e2e8f0;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ===== Custom gradient text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.green-gradient-text {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Divider ===== */
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #10b981, transparent);
+  margin: 12px 0;
+}
+
+/* ===== Fade in on scroll (intersection observer) ===== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

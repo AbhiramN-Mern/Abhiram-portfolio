@@ -5,6 +5,7 @@ export const projects: Project[] = [
     id: 'healthgate',
     title: 'HealthGate',
     subtitle: 'Hospital Management System',
+    image: '/images/healthgate.jpg',
     description:
       'A full-stack hospital management system connecting patients, doctors, and administrators through appointment management, online payments, notifications, and real-time video consultations.',
     stack: 'MERN + TypeScript + Docker',
@@ -57,7 +58,7 @@ export const projects: Project[] = [
         description: 'Nodemailer-based email notification system.',
       },
       {
-        title: 'Deployment',
+        title: 'Containerized Deployment',
         description: 'Docker, Docker Compose, and Nginx for containerized deployment.',
       },
     ],
@@ -83,19 +84,23 @@ export const projects: Project[] = [
     problem:
       'Healthcare systems often rely on fragmented tools: separate scheduling software, manual payment collection, and no mechanism for remote consultations. Coordinating across patients, doctors, and administrators becomes cumbersome and error-prone.',
     solution:
-      'HealthGate unifies appointment scheduling, online payments, email notifications, media management, and real-time video consultations into a single cohesive platform. The backend is structured using Clean Architecture and the Repository Pattern to separate business logic, infrastructure, and HTTP concerns — making the codebase maintainable as the system scales.',
+      'HealthGate unifies appointment scheduling, online payments, email notifications, media management, and real-time video consultations into a single cohesive platform. The backend is structured using Clean Architecture and the Repository Pattern to separate business logic, infrastructure, and HTTP concerns.',
+    role:
+      'Designed and developed the complete system as a solo developer. Built the React + TypeScript frontend, structured the Node.js backend using Clean Architecture and Repository Pattern, integrated Razorpay for payments, implemented real-time video consultation using WebRTC and Socket.IO with STUN/TURN, set up Cloudinary for media, Nodemailer for email notifications, and containerized the entire application using Docker, Docker Compose, and Nginx.',
     challenges: [
       'Implementing WebRTC with STUN/TURN for video consultations across different network environments.',
       'Designing a clean separation between business logic and infrastructure using the Repository Pattern.',
       'Managing complex appointment slot logic — availability windows, booking restrictions, and time-zone handling.',
       'Containerizing a multi-service Node.js + React application with Docker Compose and Nginx as a reverse proxy.',
     ],
-    githubUrl: 'https://github.com/Abhiram-N',
+    githubUrl: 'https://github.com/Abhiram-N/HealthGate',
+    liveUrl: 'https://healthgate-demo.onrender.com',
   },
   {
     id: 'urbennest',
     title: 'UrbenNest',
     subtitle: 'E-Commerce Platform',
+    image: '/images/urbennest.jpg',
     description:
       'A full-stack e-commerce platform enabling users to browse and order products online with secure payment integration, role-based dashboards, and responsive design.',
     stack: 'Node.js + Express + MongoDB + EJS',
@@ -111,7 +116,7 @@ export const projects: Project[] = [
       { title: 'Checkout', description: 'Multi-step checkout with address selection and order review.' },
       { title: 'Razorpay Payments', description: 'Secure online payment integration.' },
       { title: 'Invoice Generation', description: 'Automated PDF invoice generation on order completion.' },
-      { title: 'Sales Reporting', description: 'Admin dashboard with sales analytics and export capabilities.' },
+      { title: 'Sales Reporting', description: 'Admin dashboard with sales analytics and export.' },
       { title: 'Responsive UI', description: 'Mobile-friendly interface built with EJS templates.' },
     ],
     architecture: [
@@ -126,12 +131,15 @@ export const projects: Project[] = [
       'Building a production-ready e-commerce platform requires handling complex state (cart, wishlist, orders), multiple user roles, secure payment processing, and order management — all while keeping the codebase organized.',
     solution:
       'UrbenNest implements MVC architecture to separate concerns clearly. Express handles routing, Mongoose models manage data, EJS renders server-side views, and Razorpay handles payment processing. Admin and user dashboards are separated by role-based middleware.',
+    role:
+      'Designed and developed the complete platform as a solo developer. Built the MVC backend with Node.js and Express, implemented server-rendered views with EJS, integrated Razorpay payment processing with webhook verification, built both user and admin dashboards, implemented automated PDF invoice generation, and added sales reporting for the admin panel.',
     challenges: [
       'Implementing Razorpay webhook verification for secure payment confirmation.',
       'Designing the cart and inventory system to prevent overselling.',
       'Building a PDF invoice generation pipeline integrated with order completion.',
       'Managing role-based access control across admin and user routes.',
     ],
-    githubUrl: 'https://github.com/Abhiram-N',
+    githubUrl: 'https://github.com/Abhiram-N/UrbenNest',
+    liveUrl: 'https://urbennest.onrender.com',
   },
 ];

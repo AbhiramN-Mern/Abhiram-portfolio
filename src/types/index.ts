@@ -6,12 +6,14 @@ export interface Project {
   subtitle: string;
   description: string;
   stack: string;
+  image: string;
   technologies: string[];
   features: ProjectFeature[];
   architecture: ArchitectureDiagram[];
   overview: string;
   problem: string;
   solution: string;
+  role: string;
   challenges: string[];
   githubUrl?: string;
   liveUrl?: string;
