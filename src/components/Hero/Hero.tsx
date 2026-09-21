@@ -1,5 +1,4 @@
 import { ArrowRight, FileText, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { personal } from '../../data/personal';
 
 const coreSkills = [
@@ -70,14 +69,15 @@ export default function Hero() {
                 <span>Contact Me</span>
               </button>
 
-              <Link
-                to="/resume"
+              <a
+                href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                download="Abhiram-N-Resume.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors"
-                aria-label="View Resume"
+                aria-label="Resume"
               >
                 <FileText size={16} />
                 <span>Resume</span>
-              </Link>
+              </a>
             </div>
           </div>
 

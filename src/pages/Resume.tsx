@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Printer, ExternalLink, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Printer, Download, ExternalLink, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { personal } from '../data/personal';
 
 export default function Resume() {
@@ -24,14 +24,25 @@ export default function Resume() {
             <span>Back to Portfolio</span>
           </button>
 
-          <button
-            onClick={() => window.print()}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm rounded-md transition-colors shadow-sm"
-            title="Print or save as PDF"
-          >
-            <Printer size={15} />
-            <span>Print / Save PDF</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+              download="Abhiram-N-Resume.pdf"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-medium text-sm rounded-md transition-colors shadow-sm"
+              title="Download Resume PDF"
+            >
+              <Download size={15} />
+              <span>Download PDF</span>
+            </a>
+            <button
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm rounded-md transition-colors shadow-sm"
+              title="Print or save as PDF"
+            >
+              <Printer size={15} />
+              <span>Print / Save PDF</span>
+            </button>
+          </div>
         </div>
 
         {/* Resume Paper Container */}

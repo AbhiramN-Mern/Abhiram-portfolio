@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, FileText } from 'lucide-react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -132,14 +132,15 @@ export default function Navbar() {
 
             {/* Actions: Resume + Mobile toggle */}
             <div className="flex items-center gap-3">
-              <Link
-                to="/resume"
+              <a
+                href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                download="Abhiram-N-Resume.pdf"
                 className="hidden md:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
                 aria-label="Resume"
               >
                 <FileText size={15} />
                 <span>Resume</span>
-              </Link>
+              </a>
               <button
                 className="md:hidden p-2 text-slate-400 hover:text-white transition-colors rounded-md"
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -195,14 +196,16 @@ export default function Navbar() {
         </div>
 
         <div className="pt-4 border-t border-[#1e293b]">
-          <Link
-            to="/resume"
+          <a
+            href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+            download="Abhiram-N-Resume.pdf"
             onClick={() => setMenuOpen(false)}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
+            aria-label="Resume"
           >
             <FileText size={16} />
             <span>View Resume</span>
-          </Link>
+          </a>
         </div>
       </div>
     </>
