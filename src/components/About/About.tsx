@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { personal } from '../../data/personal';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -88,13 +87,15 @@ export default function About() {
               </div>
 
               <div className="pt-3 flex items-center justify-between">
-                <Link
-                  to="/resume"
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
                   <span>View Full Resume</span>
                   <ArrowRight size={14} />
-                </Link>
+                </a>
                 <span className="text-xs text-slate-500">PDF Available</span>
               </div>
             </div>
