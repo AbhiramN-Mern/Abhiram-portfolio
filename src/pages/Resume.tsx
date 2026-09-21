@@ -258,25 +258,7 @@ export default function Resume() {
             </div>
           </section>
 
-          {/* Education */}
-          <section aria-label="Education">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3 print:text-gray-900">
-              Education
-            </h2>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm">
-              <div>
-                <div className="font-semibold text-white print:text-black">
-                  Bachelor of Computer Applications (BCA)
-                </div>
-                <div className="text-xs text-slate-400 print:text-gray-600">
-                  Computer Science &amp; Software Development
-                </div>
-              </div>
-              <div className="text-xs text-slate-400 print:text-gray-600 sm:text-right mt-1 sm:mt-0">
-                Calicut University
-              </div>
-            </div>
-          </section>
+         
 
         </div>
 
