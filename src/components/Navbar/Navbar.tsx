@@ -101,9 +101,13 @@ export default function Navbar() {
               className="flex items-center gap-2.5 text-left focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md py-1"
               aria-label="Home — Abhiram N"
             >
-              <span className="w-8 h-8 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-semibold text-sm">
-                AN
-              </span>
+              <span className="w-8 h-8 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center overflow-hidden">
+  <img
+    src="/public/favicon.png"
+    alt="AN"
+    className="w-6 h-6 object-contain"
+  />
+</span>
               <span className="font-semibold text-slate-100 tracking-tight text-base hover:text-emerald-400 transition-colors">
                 Abhiram N
               </span>
