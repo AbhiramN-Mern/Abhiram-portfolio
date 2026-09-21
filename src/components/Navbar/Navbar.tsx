@@ -103,7 +103,7 @@ export default function Navbar() {
             >
               <span className="w-8 h-8 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center overflow-hidden">
   <img
-    src="/public/favicon.png"
+    src="/favicon.png"
     alt="AN"
     className="w-6 h-6 object-contain"
   />
