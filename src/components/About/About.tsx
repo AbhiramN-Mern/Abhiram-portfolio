@@ -88,8 +88,10 @@ export default function About() {
 
               <div className="pt-3 flex items-center justify-between">
                 <a
-                  href="/resume.pdf"
-                  download
+                  href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                  download="Abhiram MERN STACK DEVELOPER.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
                   aria-label="Download Full Resume"
                 >

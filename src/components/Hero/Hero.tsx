@@ -70,8 +70,10 @@ export default function Hero() {
               </button>
 
               <a
-                href="/resume.pdf"
-                download
+                href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                download="Abhiram MERN STACK DEVELOPER.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors"
                 aria-label="Download Resume"
               >

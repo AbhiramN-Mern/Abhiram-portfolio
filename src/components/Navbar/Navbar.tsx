@@ -138,8 +138,10 @@ export default function Navbar() {
             {/* Actions: Resume + Mobile toggle */}
             <div className="flex items-center gap-3">
               <a
-                href="/resume.pdf"
-                download
+                href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                download="Abhiram MERN STACK DEVELOPER.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
                 aria-label="Download Resume"
               >
@@ -202,8 +204,10 @@ export default function Navbar() {
 
         <div className="pt-4 border-t border-[#1e293b]">
           <a
-            href="/resume.pdf"
-            download
+            href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+            download="Abhiram MERN STACK DEVELOPER.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
             aria-label="Download Resume"
