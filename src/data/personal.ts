@@ -6,8 +6,8 @@ export const personal = {
   status: 'Open to opportunities',
   bio: 'Software Developer focused on building scalable and reliable web applications using modern technologies. My work spans frontend development, backend systems, database design, authentication, real-time communication, payment integrations, and deployment.',
   bio2: 'I enjoy understanding how different parts of an application work together and building systems that are maintainable, practical, and ready to grow.',
-  githubUrl: 'https://github.com/Abhiram-N',
-  linkedinUrl: 'https://linkedin.com/in/abhiram-n',
+  githubUrl: 'https://github.com/AbhiramN-Mern/',
+  linkedinUrl: 'https://linkedin.com/in/abhiram-n-',
 };
 
 export const systemInfo = [

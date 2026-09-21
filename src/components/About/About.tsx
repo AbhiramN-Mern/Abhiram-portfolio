@@ -1,81 +1,107 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { personal, systemInfo } from '../../data/personal';
+import { personal } from '../../data/personal';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const highlights = [
+  'Full-stack MERN development with strong TypeScript foundations',
+  'Clean Architecture & Repository Pattern for maintainable codebases',
+  'Real-time communication using WebSockets and WebRTC',
+  'REST API design, JWT authentication, and role-based access control',
+  'Containerized deployments with Docker, Docker Compose, and Nginx',
+];
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) el.classList.add('is-visible');
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="about"
-      ref={sectionRef}
-      className="fade-in-section py-20 lg:py-28"
+      className="py-20 border-t border-[#1e293b]"
       aria-label="About Abhiram N"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <span className="section-subtitle">About Me</span>
+          <h2 className="text-3xl font-bold text-white mt-1">
+            Background &amp; Approach
+          </h2>
+        </div>
 
-          {/* Left: Text */}
-          <div className="space-y-6">
-            <div className="section-label">01 // About</div>
-            <div className="section-divider" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Bio text (7 cols) */}
+          <div className="lg:col-span-7 space-y-5 text-slate-300 text-base leading-relaxed">
+            <p>
+              I am a Full Stack Developer with a solid grounding in the MERN stack and modern TypeScript.
+              My focus is on engineering web systems that are predictable, maintainable, and built on sound architectural patterns rather than quick patches.
+            </p>
+            <p>
+              {personal.bio}
+            </p>
+            <p>
+              {personal.bio2}
+            </p>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
-              Building practical software from frontend to backend.
-            </h2>
-
-            <div className="space-y-4 text-terminal-muted leading-relaxed">
-              <p>{personal.bio}</p>
-              <p>{personal.bio2}</p>
+            <div className="pt-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-3">
+                Key Engineering Practices
+              </h3>
+              <ul className="space-y-2.5">
+                {highlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                    <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Right: Info card — clean, no terminal chrome */}
-          <div className="w-full">
-            <div className="card p-5">
-              <div className="section-label mb-4">// profile</div>
-              <div className="space-y-3">
-                {systemInfo.map(({ key, value }) => (
-                  <div
-                    key={key}
-                    className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 py-2 border-b border-terminal-border/50 last:border-0"
-                  >
-                    <span className="font-mono text-xs text-terminal-green min-w-[130px] font-semibold">
-                      {key}
-                    </span>
-                    <span className="text-sm text-terminal-muted">{value}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-3 border-t border-terminal-border/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-terminal-green animate-pulse" />
-                  <span className="text-sm text-terminal-green font-medium">Open to opportunities</span>
+          {/* Profile Overview Card (5 cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6 space-y-4 shadow-sm">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 pb-3 border-b border-[#1e293b]">
+                Developer Snapshot
+              </h3>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
+                  <span className="text-slate-400 font-medium">Role</span>
+                  <span className="text-slate-200 font-semibold">{personal.role}</span>
                 </div>
+                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
+                  <span className="text-slate-400 font-medium">Specialization</span>
+                  <span className="text-slate-200">Full-Stack Web Apps</span>
+                </div>
+                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
+                  <span className="text-slate-400 font-medium">Architecture</span>
+                  <span className="text-slate-200">Clean Architecture / MVC</span>
+                </div>
+                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
+                  <span className="text-slate-400 font-medium">Availability</span>
+                  <span className="text-emerald-400 font-medium">{personal.status}</span>
+                </div>
+                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
+                  <span className="text-slate-400 font-medium">Location</span>
+                  <span className="text-slate-200">Kerala, India</span>
+                </div>
+              </div>
+
+              <div className="pt-3 flex items-center justify-between">
                 <Link
                   to="/resume"
-                  className="font-mono text-xs text-terminal-muted hover:text-terminal-green transition-colors inline-flex items-center gap-1"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
-                  View Resume →
+                  <span>View Full Resume</span>
+                  <ArrowRight size={14} />
                 </Link>
+                <span className="text-xs text-slate-500">PDF Available</span>
               </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
   );

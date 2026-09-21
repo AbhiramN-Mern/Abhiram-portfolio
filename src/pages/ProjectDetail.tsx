@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, GitBranch, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { GithubIcon } from '../components/common/Icons';
 import { projects } from '../data/projects';
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const project = projects.find(p => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
-  // Scroll to top on mount
+  // Scroll to top on mount or id change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [id]);
@@ -23,57 +24,60 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4">
-        <p className="font-mono text-terminal-muted text-sm">Project not found.</p>
+      <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4 px-4">
+        <h1 className="text-2xl font-bold text-white">Project Not Found</h1>
+        <p className="text-slate-400 text-sm">The project you are looking for does not exist.</p>
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-2 text-sm text-terminal-green hover:underline"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-md text-sm font-medium transition-colors"
         >
-          <ArrowLeft size={14} />
-          Back to Home
+          <ArrowLeft size={16} />
+          <span>Back to Home</span>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="pt-16 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
-        {/* Top Back link */}
-        <div className="mb-6">
+    <div className="pt-24 pb-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Navigation */}
+        <div className="mb-8">
           <button
             onClick={handleBackToProjects}
-            className="inline-flex items-center gap-2 text-sm text-terminal-muted hover:text-terminal-green transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors group"
             aria-label="Back to Projects"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Projects
+            <span>Back to Projects</span>
           </button>
         </div>
 
-        {/* Large Project Image/Preview at the Top */}
-        <div className="rounded-xl overflow-hidden border border-terminal-border bg-terminal-card shadow-terminal mb-8">
-          <img
-            src={project.image}
-            alt={`${project.title} Preview`}
-            className="w-full h-auto max-h-[460px] object-cover object-top"
-            loading="eager"
-          />
-        </div>
-         {/* Action Buttons: Live Demo & GitHub */}
-          <section aria-label="Project Links" className="pt-2">
-            <div className="flex flex-wrap items-center gap-4">
+        {/* Project Header: Title & Actions */}
+        <header className="mb-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                {project.title}
+              </h1>
+              <p className="text-lg text-emerald-400 font-medium mt-1">
+                {project.subtitle}
+              </p>
+            </div>
+
+            {/* Action buttons: Live Demo & GitHub */}
+            <div className="flex items-center gap-3">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-terminal-green text-terminal-bg font-semibold text-sm rounded hover:bg-terminal-green-glow transition-all duration-200 shadow focus-visible:ring-2 focus-visible:ring-terminal-green"
-                  aria-label={`${project.title} Live Demo — opens in new tab`}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-md transition-colors shadow-sm"
+                  aria-label={`${project.title} Live Demo (opens in new tab)`}
                 >
                   <ExternalLink size={16} />
-                  Live Demo
+                  <span>Live Demo</span>
                 </a>
               )}
 
@@ -82,42 +86,54 @@ export default function ProjectDetail() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-terminal-border text-terminal-text text-sm font-medium rounded hover:border-terminal-green/50 hover:text-terminal-green hover:bg-terminal-green/5 transition-all duration-200"
-                  aria-label={`${project.title} GitHub repository — opens in new tab`}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 border border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-200 hover:text-white text-sm font-medium rounded-md transition-colors"
+                  aria-label={`${project.title} GitHub repository (opens in new tab)`}
                 >
-                  <GitBranch size={16} />
-                  GitHub
+                  <GithubIcon size={16} />
+                  <span>GitHub</span>
                 </a>
               )}
             </div>
-          </section>
+          </div>
+        </header>
 
-        {/* Short Description / Overview */}
-        <div className="space-y-8">
-          <section aria-label="Project Overview">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-terminal-green mb-3">
-              // Overview
+        {/* Large Project Image */}
+        <div className="rounded-lg overflow-hidden border border-[#1e293b] bg-[#111726] shadow-sm mb-12">
+          <img
+            src={project.image}
+            alt={`${project.title} interface preview`}
+            className="w-full h-auto max-h-[500px] object-cover object-top"
+            loading="eager"
+          />
+        </div>
+
+        <div className="space-y-12">
+          {/* Detailed Description / Overview */}
+          <section aria-labelledby="overview-heading">
+            <h2 id="overview-heading" className="text-xl font-bold text-white mb-4">
+              Project Overview
             </h2>
-             
-            
-            <p className="text-base text-terminal-text leading-relaxed font-normal">
+            <p className="text-slate-300 text-base leading-relaxed mb-4">
               {project.overview}
+            </p>
+            <p className="text-slate-300 text-base leading-relaxed">
+              {project.solution}
             </p>
           </section>
 
           {/* Key Features */}
-          <section aria-label="Key Features">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-terminal-green mb-3">
-              // Key Features
+          <section aria-labelledby="features-heading">
+            <h2 id="features-heading" className="text-xl font-bold text-white mb-5">
+              Key Features
             </h2>
-            <div className="card p-5 sm:p-6 bg-terminal-card/60">
-              <ul className="space-y-3">
-                {project.features.map(feature => (
+            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6">
+              <ul className="space-y-4">
+                {project.features.map((feature) => (
                   <li key={feature.title} className="flex items-start gap-3">
-                    <span className="text-terminal-green font-bold text-base mt-0.5 select-none">•</span>
+                    <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
                     <div className="text-sm leading-relaxed">
                       <strong className="text-white font-semibold">{feature.title}</strong>
-                      <span className="text-terminal-muted"> — {feature.description}</span>
+                      <span className="text-slate-300"> — {feature.description}</span>
                     </div>
                   </li>
                 ))}
@@ -126,46 +142,43 @@ export default function ProjectDetail() {
           </section>
 
           {/* Technologies Used */}
-          <section aria-label="Technologies Used">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-terminal-green mb-3">
-              // Technologies
+          <section aria-labelledby="technologies-heading">
+            <h2 id="technologies-heading" className="text-xl font-bold text-white mb-4">
+              Technologies Used
             </h2>
-            <div className="card p-4 sm:p-5 bg-terminal-card/60">
-              <div className="text-sm font-mono text-terminal-green mb-3 font-semibold">
-                {project.technologies.join(' • ')}
-              </div>
-              <div className="flex flex-wrap gap-2 pt-2 border-t border-terminal-border/50">
-                {project.technologies.map(tech => (
-                  <span key={tech} className="skill-badge">{tech}</span>
+            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6">
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-xs font-medium text-slate-200 bg-[#162032] border border-[#222f44] rounded-md"
+                  >
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* My Role / Contribution */}
-          <section aria-label="My Role and Contribution">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-terminal-green mb-3">
-              // My Role & Contribution
+          {/* Role & Engineering Contribution */}
+          <section aria-labelledby="role-heading">
+            <h2 id="role-heading" className="text-xl font-bold text-white mb-4">
+              Engineering Contribution
             </h2>
-            <div className="card p-5 sm:p-6 bg-terminal-card/60">
-              <p className="text-sm sm:text-base text-terminal-muted leading-relaxed">
-                {project.role}
-              </p>
+            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6 text-slate-300 text-sm sm:text-base leading-relaxed">
+              {project.role}
             </div>
           </section>
-
-      
-
         </div>
 
-        {/* Bottom Back Link */}
-        <div className="mt-14 pt-8 border-t border-terminal-border">
+        {/* Bottom Navigation */}
+        <div className="mt-16 pt-8 border-t border-[#1e293b]">
           <button
             onClick={handleBackToProjects}
-            className="inline-flex items-center gap-2 text-sm text-terminal-muted hover:text-terminal-green transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            ← Back to Projects
+            <span>Back to Projects</span>
           </button>
         </div>
 

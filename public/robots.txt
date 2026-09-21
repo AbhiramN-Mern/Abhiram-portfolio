@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abhiramn.dev/sitemap.xml
+Sitemap: https://abhiramn.online/sitemap.xml

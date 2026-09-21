@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -8,68 +8,64 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="card flex flex-col h-full overflow-hidden hover:border-terminal-border/80 transition-all duration-200 group">
-
-      {/* Featured accent bar */}
-      {project.isFeatured && (
-        <div className="h-px bg-gradient-to-r from-terminal-green via-terminal-green/50 to-transparent flex-shrink-0" />
-      )}
-
+    <div className="bg-[#111726] border border-[#1e293b] rounded-lg overflow-hidden flex flex-col h-full hover:border-[#334155] transition-colors group shadow-sm">
       {/* Project Image */}
-      <div className="relative overflow-hidden bg-terminal-border/20 flex-shrink-0" style={{ height: '200px' }}>
+      <div className="relative aspect-video w-full overflow-hidden bg-[#0c101a] border-b border-[#1e293b]">
         <img
           src={project.image}
-          alt={`${project.title} preview`}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+          alt={`${project.title} screenshot`}
+          className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
           loading="lazy"
         />
-        {project.isFeatured && (
-          <div className="absolute top-3 left-3">
-            <span className="font-mono text-xs text-terminal-bg bg-terminal-green px-2 py-0.5 rounded font-semibold shadow">
-              FEATURED
-            </span>
-          </div>
-        )}
       </div>
 
-      {/* Content */}
-      <div className="p-5 flex flex-col flex-1">
-
-        {/* Title */}
+      {/* Card Content */}
+      <div className="p-6 flex flex-col flex-1">
+        {/* Project Name & Subtitle */}
         <div className="mb-3">
-          <h3 className="text-lg font-bold text-white group-hover:text-terminal-green transition-colors mb-0.5">
+          <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
             {project.title}
           </h3>
-          <p className="text-terminal-muted text-xs font-mono">{project.subtitle}</p>
+          <p className="text-xs font-medium text-emerald-400 mt-0.5">
+            {project.subtitle}
+          </p>
         </div>
 
-        {/* Description — clamped to 2 lines */}
-        <p className="text-terminal-muted text-sm leading-relaxed mb-4 line-clamp-2">
+        {/* Short Description */}
+        <p className="text-slate-300 text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
           {project.description}
         </p>
 
-        {/* Tech stack — key technologies only */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.technologies.slice(0, 6).map(tech => (
-            <span key={tech} className="skill-badge">{tech}</span>
-          ))}
-          {project.technologies.length > 6 && (
-            <span className="skill-badge text-terminal-comment">+{project.technologies.length - 6}</span>
-          )}
+        {/* Technologies Used */}
+        <div className="mb-6">
+          <div className="flex flex-wrap gap-1.5">
+            {project.technologies.slice(0, 5).map((tech) => (
+              <span
+                key={tech}
+                className="text-xs font-medium text-slate-300 bg-[#162032] border border-[#222f44] px-2.5 py-0.5 rounded"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 5 && (
+              <span className="text-xs font-medium text-slate-400 bg-[#162032] px-2 py-0.5 rounded">
+                +{project.technologies.length - 5}
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* View Project — pinned to bottom */}
-        <div className="mt-auto">
+        {/* View Project Link */}
+        <div className="pt-2">
           <Link
             to={`/projects/${project.id}`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-terminal-green border border-terminal-green/30 bg-terminal-green/5 rounded hover:bg-terminal-green hover:text-terminal-bg transition-all duration-200 w-full justify-center sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-sm font-medium text-slate-200 bg-slate-800/80 hover:bg-emerald-600 hover:text-white border border-slate-700 hover:border-emerald-600 rounded-md transition-colors"
             aria-label={`View ${project.title} details`}
           >
-            View Project
-            <ChevronRight size={14} />
+            <span>View Project</span>
+            <ArrowRight size={15} />
           </Link>
         </div>
-
       </div>
     </div>
   );

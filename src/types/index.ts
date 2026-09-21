@@ -20,6 +20,13 @@ export interface Project {
   isFeatured?: boolean;
 }
 
+export interface MiniProject {
+  id: string;
+  name: string;
+  description: string;
+  githubUrl: string;
+}
+
 export interface ProjectFeature {
   title: string;
   description: string;
@@ -35,10 +42,6 @@ export interface SkillCategory {
   skills: string[];
 }
 
-export interface JourneyMilestone {
-  title: string;
-  description: string;
-}
 
 export interface ContactFormData {
   name: string;

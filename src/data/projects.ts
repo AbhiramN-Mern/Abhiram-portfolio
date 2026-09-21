@@ -93,8 +93,8 @@ export const projects: Project[] = [
       'Managing complex appointment slot logic — availability windows, booking restrictions, and time-zone handling.',
       'Containerizing a multi-service Node.js + React application with Docker Compose and Nginx as a reverse proxy.',
     ],
-    githubUrl: 'https://github.com/Abhiram-N/HealthGate',
-    liveUrl: 'https://healthgate-demo.onrender.com',
+    githubUrl: 'https://github.com/AbhiramN-Mern/HelthGate',
+    liveUrl: 'https://helthgate.online/',
   },
   {
     id: 'urbennest',
@@ -139,7 +139,7 @@ export const projects: Project[] = [
       'Building a PDF invoice generation pipeline integrated with order completion.',
       'Managing role-based access control across admin and user routes.',
     ],
-    githubUrl: 'https://github.com/Abhiram-N/UrbenNest',
-    liveUrl: 'https://urbennest.onrender.com',
+    githubUrl: 'https://github.com/AbhiramN-Mern/UrbenNest',
+    liveUrl: 'https://ecommerce-urbennest.onrender.com/',
   },
 ];
