@@ -10,21 +10,27 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="bg-[#111726] border border-[#1e293b] rounded-lg overflow-hidden flex flex-col h-full hover:border-[#334155] transition-colors group shadow-sm">
       {/* Project Image */}
-      <div className="relative aspect-video w-full overflow-hidden bg-[#0c101a] border-b border-[#1e293b]">
+      <Link
+        to={`/projects/${project.id}`}
+        className="block relative aspect-video w-full overflow-hidden bg-[#0c101a] border-b border-[#1e293b]"
+        aria-label={`View ${project.title} details`}
+      >
         <img
           src={project.image}
-          alt={`${project.title} screenshot`}
+          alt={`${project.title} - ${project.subtitle} interface preview`}
           className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
           loading="lazy"
         />
-      </div>
+      </Link>
 
       {/* Card Content */}
       <div className="p-6 flex flex-col flex-1">
         {/* Project Name & Subtitle */}
         <div className="mb-3">
           <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-            {project.title}
+            <Link to={`/projects/${project.id}`} className="hover:text-emerald-400 transition-colors">
+              {project.title}
+            </Link>
           </h3>
           <p className="text-xs font-medium text-emerald-400 mt-0.5">
             {project.subtitle}

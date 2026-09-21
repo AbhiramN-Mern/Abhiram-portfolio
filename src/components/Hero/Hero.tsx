@@ -71,10 +71,9 @@ export default function Hero() {
 
               <a
                 href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors"
-                aria-label="Resume"
+                aria-label="Download Resume"
               >
                 <FileText size={16} />
                 <span>Resume</span>

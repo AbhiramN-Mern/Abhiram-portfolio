@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { GithubIcon } from '../components/common/Icons';
 import { projects } from '../data/projects';
@@ -9,10 +9,16 @@ export default function ProjectDetail() {
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === id);
 
-  // Scroll to top on mount or id change
+  // Scroll to top on mount or id change, set page title
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [id]);
+    if (project) {
+      document.title = `${project.title} — ${project.subtitle} | Abhiram N`;
+    }
+    return () => {
+      document.title = 'Abhiram N | MERN Stack Developer';
+    };
+  }, [id, project]);
 
   const handleBackToProjects = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
@@ -27,13 +33,13 @@ export default function ProjectDetail() {
       <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4 px-4">
         <h1 className="text-2xl font-bold text-white">Project Not Found</h1>
         <p className="text-slate-400 text-sm">The project you are looking for does not exist.</p>
-        <button
-          onClick={() => navigate('/')}
+        <Link
+          to="/"
           className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-md text-sm font-medium transition-colors"
         >
           <ArrowLeft size={16} />
           <span>Back to Home</span>
-        </button>
+        </Link>
       </div>
     );
   }
@@ -43,16 +49,17 @@ export default function ProjectDetail() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Navigation */}
-        <div className="mb-8">
-          <button
+        <nav aria-label="Breadcrumb navigation" className="mb-8">
+          <Link
+            to="/#projects"
             onClick={handleBackToProjects}
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors group"
             aria-label="Back to Projects"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Projects</span>
-          </button>
-        </div>
+          </Link>
+        </nav>
 
         {/* Project Header: Title & Actions */}
         <header className="mb-8">
@@ -172,15 +179,17 @@ export default function ProjectDetail() {
         </div>
 
         {/* Bottom Navigation */}
-        <div className="mt-16 pt-8 border-t border-[#1e293b]">
-          <button
+        <nav aria-label="Bottom back navigation" className="mt-16 pt-8 border-t border-[#1e293b]">
+          <Link
+            to="/#projects"
             onClick={handleBackToProjects}
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors group"
+            aria-label="Back to Projects"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Projects</span>
-          </button>
-        </div>
+          </Link>
+        </nav>
 
       </div>
     </div>

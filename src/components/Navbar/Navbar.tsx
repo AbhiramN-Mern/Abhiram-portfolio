@@ -84,16 +84,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
           scrolled
             ? 'bg-[#0a0d14]/90 backdrop-blur-md border-b border-[#1e293b]'
             : 'bg-transparent'
         }`}
-        role="navigation"
-        aria-label="Main navigation"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav
+          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+          aria-label="Main navigation"
+        >
           <div className="flex items-center justify-between h-16">
             {/* Brand Logo */}
             <button
@@ -102,12 +103,12 @@ export default function Navbar() {
               aria-label="Home — Abhiram N"
             >
               <span className="w-8 h-8 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center overflow-hidden">
-  <img
-    src="/favicon.png"
-    alt="AN"
-    className="w-6 h-6 object-contain"
-  />
-</span>
+                <img
+                  src="/favicon.png"
+                  alt="Abhiram N logo"
+                  className="w-6 h-6 object-contain"
+                />
+              </span>
               <span className="font-semibold text-slate-100 tracking-tight text-base hover:text-emerald-400 transition-colors">
                 Abhiram N
               </span>
@@ -138,10 +139,9 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <a
                 href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download
                 className="hidden md:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
-                aria-label="Resume"
+                aria-label="Download Resume"
               >
                 <FileText size={15} />
                 <span>Resume</span>
@@ -157,8 +157,8 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Mobile Menu Backdrop */}
       {menuOpen && (
@@ -203,14 +203,13 @@ export default function Navbar() {
         <div className="pt-4 border-t border-[#1e293b]">
           <a
             href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            download
             onClick={() => setMenuOpen(false)}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-slate-200 border border-slate-700 rounded-md hover:border-emerald-500/50 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
-            aria-label="Resume"
+            aria-label="Download Resume"
           >
             <FileText size={16} />
-            <span>View Resume</span>
+            <span>Download Resume</span>
           </a>
         </div>
       </div>

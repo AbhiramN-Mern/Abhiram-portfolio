@@ -89,11 +89,11 @@ export default function About() {
               <div className="pt-3 flex items-center justify-between">
                 <a
                   href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                  aria-label="Download Full Resume"
                 >
-                  <span>View Full Resume</span>
+                  <span>Download Full Resume</span>
                   <ArrowRight size={14} />
                 </a>
                 <span className="text-xs text-slate-500">PDF Available</span>
