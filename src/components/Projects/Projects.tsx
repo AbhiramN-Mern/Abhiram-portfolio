@@ -5,18 +5,19 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 border-t border-[#1e293b]"
+      className="py-24 sm:py-28 border-b border-border"
       aria-label="Projects"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="mb-12">
-          <span className="section-subtitle">Projects</span>
-          <h2 className="text-3xl font-bold text-white mt-1">
+        <div className="pb-8 border-b border-border mb-12">
+          <span className="font-mono text-xs uppercase tracking-wider text-secondary font-medium">
+            Projects
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-medium text-primary mt-2 tracking-tight">
             Featured Applications
           </h2>
-          <p className="text-slate-400 mt-2 text-base max-w-2xl">
+          <p className="text-secondary mt-3 text-base max-w-2xl leading-relaxed">
             Real-world full-stack systems built from scratch, covering frontend architecture, backend services, and deployment.
           </p>
         </div>
@@ -27,7 +28,6 @@ export default function Projects() {
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-
       </div>
     </section>
   );

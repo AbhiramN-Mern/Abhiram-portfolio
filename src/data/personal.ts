@@ -3,7 +3,6 @@ export const personal = {
   role: 'MERN Stack Developer',
   email: 'abhiramnksd@gmail.com',
   phone: '7510724165',
-  status: 'Open to opportunities',
   bio: 'Software Developer focused on building scalable and reliable web applications using modern technologies. My work spans frontend development, backend systems, database design, authentication, real-time communication, payment integrations, and deployment.',
   bio2: 'I enjoy understanding how different parts of an application work together and building systems that are maintainable, practical, and ready to grow.',
   githubUrl: 'https://github.com/AbhiramN-Mern/',

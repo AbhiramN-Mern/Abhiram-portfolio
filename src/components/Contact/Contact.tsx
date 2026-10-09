@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, Phone, Send, CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
 import { personal } from '../../data/personal';
 import type { ContactFormData, ContactFormErrors } from '../../types';
@@ -44,7 +44,7 @@ const contactChannels = [
   {
     icon: LinkedinIcon,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/abhiram-n',
+    value: 'linkedin.com/in/abhiram-n-',
     href: personal.linkedinUrl,
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -52,7 +52,7 @@ const contactChannels = [
   {
     icon: GithubIcon,
     label: 'GitHub',
-    value: 'github.com/Abhiram-N',
+    value: 'github.com/AbhiramN-Mern',
     href: personal.githubUrl,
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -129,197 +129,203 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 border-t border-[#1e293b]"
+      className="py-24 sm:py-28"
       aria-label="Contact"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="mb-12">
-          <span className="section-subtitle">Contact</span>
-          <h2 className="text-3xl font-bold text-white mt-1">
+        <div className="pb-8 border-b border-border mb-12">
+          <span className="font-mono text-xs uppercase tracking-wider text-secondary font-medium">
+            Contact
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-medium text-primary mt-2 tracking-tight">
             Get In Touch
           </h2>
-          <p className="text-slate-400 mt-2 text-base max-w-2xl">
+          <p className="text-secondary mt-3 text-base max-w-2xl leading-relaxed">
             Whether you have an opportunity, a question, or want to discuss a project, feel free to reach out.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left: Contact Channels (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-4">
+          {/* Direct Communication Index (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <span className="font-mono text-xs uppercase tracking-wider text-secondary block pb-3 border-b border-border">
               Direct Contact
-            </h3>
+            </span>
 
-            <div className="space-y-3">
+            <div className="divide-y divide-border">
               {contactChannels.map(({ icon: Icon, label, value, href, target, rel }) => (
                 <a
                   key={label}
                   href={href}
                   target={target}
                   rel={rel}
-                  className="flex items-center gap-4 p-4 rounded-lg bg-[#111726] border border-[#1e293b] hover:border-[#334155] hover:bg-[#151c2f] transition-all group"
+                  className="py-4 flex items-center justify-between group transition-colors"
                   aria-label={`${label}: ${value}`}
                 >
-                  <div className="w-10 h-10 rounded-md bg-[#162032] border border-[#222f44] flex items-center justify-center flex-shrink-0 text-emerald-400 group-hover:border-emerald-500/40 transition-colors">
-                    <Icon size={18} />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-xs font-medium text-slate-400 block">{label}</span>
-                    <span className="text-sm font-semibold text-slate-200 group-hover:text-emerald-400 transition-colors truncate block">
-                      {value}
+                  <div className="flex items-center gap-3">
+                    <span className="p-2 rounded-sm bg-surface border border-border text-secondary group-hover:border-primary/50 group-hover:text-white transition-colors">
+                      <Icon size={16} />
                     </span>
+                    <div>
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-secondary block">
+                        {label}
+                      </span>
+                      <span className="text-sm font-medium text-primary group-hover:text-white transition-colors">
+                        {value}
+                      </span>
+                    </div>
                   </div>
+
+                  <ArrowUpRight
+                    size={15}
+                    className="text-secondary/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                  />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right: Contact Form (7 cols) */}
-          <div className="lg:col-span-7">
-            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6 sm:p-8 shadow-sm">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-6">
-                Send a Message
-              </h3>
+          {/* Form (7 cols) */}
+          <div className="lg:col-span-7 bg-surface border border-border p-6 sm:p-8 rounded-sm">
+            <h3 className="font-mono text-xs uppercase tracking-wider text-secondary block pb-3 border-b border-border mb-6">
+              Send a Message
+            </h3>
 
-              <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                {/* Name Field */}
-                <div>
-                  <label htmlFor="contact-name" className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Your Name
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    disabled={status === 'sending'}
-                    value={formData.name}
-                    onChange={handleChange}
-                    autoComplete="name"
-                    className={`w-full bg-[#0a0d14] border rounded-md px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                      errors.name ? 'border-red-500' : 'border-[#1e293b] focus:border-emerald-500'
-                    }`}
-                    placeholder="John Doe"
-                    aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? 'name-error' : undefined}
-                  />
-                  {errors.name && (
-                    <div id="name-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400">
-                      <AlertCircle size={13} aria-hidden="true" />
-                      <span>{errors.name}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Email Field */}
-                <div>
-                  <label htmlFor="contact-email" className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Your Email
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    disabled={status === 'sending'}
-                    value={formData.email}
-                    onChange={handleChange}
-                    autoComplete="email"
-                    className={`w-full bg-[#0a0d14] border rounded-md px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                      errors.email ? 'border-red-500' : 'border-[#1e293b] focus:border-emerald-500'
-                    }`}
-                    placeholder="john@example.com"
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
-                  />
-                  {errors.email && (
-                    <div id="email-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400">
-                      <AlertCircle size={13} aria-hidden="true" />
-                      <span>{errors.email}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Message Field */}
-                <div>
-                  <label htmlFor="contact-message" className="block text-xs font-medium text-slate-300 mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows={5}
-                    disabled={status === 'sending'}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className={`w-full bg-[#0a0d14] border rounded-md px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed ${
-                      errors.message ? 'border-red-500' : 'border-[#1e293b] focus:border-emerald-500'
-                    }`}
-                    placeholder="Hello Abhiram, I'd like to discuss..."
-                    aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? 'message-error' : undefined}
-                  />
-                  {errors.message && (
-                    <div id="message-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400">
-                      <AlertCircle size={13} aria-hidden="true" />
-                      <span>{errors.message}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Submission State Notifications */}
-                {status === 'success' && (
-                  <div
-                    role="status"
-                    className="flex items-center gap-2.5 p-3.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm"
-                  >
-                    <CheckCircle2 size={18} className="flex-shrink-0" aria-hidden="true" />
-                    <span>Message sent successfully</span>
-                  </div>
-                )}
-
-                {status === 'error' && (
-                  <div
-                    role="alert"
-                    className="flex flex-col gap-1 p-3.5 rounded-md bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <AlertCircle size={18} className="flex-shrink-0" aria-hidden="true" />
-                      <span className="font-medium">Failed to send message</span>
-                    </div>
-                    {errorMessage && errorMessage !== 'Failed to send message' && (
-                      <p className="text-xs text-red-300/80 pl-7">{errorMessage}</p>
-                    )}
-                  </div>
-                )}
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
+            <form onSubmit={handleSubmit} noValidate className="space-y-5">
+              {/* Name */}
+              <div>
+                <label htmlFor="contact-name" className="block text-xs font-medium text-secondary mb-1.5">
+                  Your Name
+                </label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
                   disabled={status === 'sending'}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm cursor-pointer"
+                  value={formData.name}
+                  onChange={handleChange}
+                  autoComplete="name"
+                  className={`w-full bg-page border rounded-sm px-3.5 py-2.5 text-sm text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50 ${
+                    errors.name ? 'border-red-500' : 'border-border'
+                  }`}
+                  placeholder="John Doe"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                />
+                {errors.name && (
+                  <div id="name-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400 font-mono">
+                    <AlertCircle size={13} aria-hidden="true" />
+                    <span>{errors.name}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label htmlFor="contact-email" className="block text-xs font-medium text-secondary mb-1.5">
+                  Your Email
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  disabled={status === 'sending'}
+                  value={formData.email}
+                  onChange={handleChange}
+                  autoComplete="email"
+                  className={`w-full bg-page border rounded-sm px-3.5 py-2.5 text-sm text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50 ${
+                    errors.email ? 'border-red-500' : 'border-border'
+                  }`}
+                  placeholder="john@example.com"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                />
+                {errors.email && (
+                  <div id="email-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400 font-mono">
+                    <AlertCircle size={13} aria-hidden="true" />
+                    <span>{errors.email}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Message */}
+              <div>
+                <label htmlFor="contact-message" className="block text-xs font-medium text-secondary mb-1.5">
+                  Message
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows={5}
+                  disabled={status === 'sending'}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={`w-full bg-page border rounded-sm px-3.5 py-2.5 text-sm text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none disabled:opacity-50 ${
+                    errors.message ? 'border-red-500' : 'border-border'
+                  }`}
+                  placeholder="Hello Abhiram, I'd like to discuss..."
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                />
+                {errors.message && (
+                  <div id="message-error" className="flex items-center gap-1.5 mt-1.5 text-xs text-red-400 font-mono">
+                    <AlertCircle size={13} aria-hidden="true" />
+                    <span>{errors.message}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Status messages */}
+              {status === 'success' && (
+                <div
+                  role="status"
+                  className="flex items-center gap-2 p-3 rounded-sm bg-page border border-border text-primary text-sm font-mono"
                 >
-                  {status === 'sending' ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" aria-hidden="true" />
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send size={16} className="w-4 h-4 flex-shrink-0" aria-hidden="true" focusable="false" />
-                      <span>Send Message</span>
-                    </>
+                  <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0" />
+                  <span>Message sent successfully</span>
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div
+                  role="alert"
+                  className="flex flex-col gap-1 p-3 rounded-sm bg-page border border-red-500/50 text-red-400 text-sm font-mono"
+                >
+                  <div className="flex items-center gap-2">
+                    <AlertCircle size={16} className="flex-shrink-0" />
+                    <span>Failed to send message</span>
+                  </div>
+                  {errorMessage && errorMessage !== 'Failed to send message' && (
+                    <p className="text-xs text-secondary pl-6">{errorMessage}</p>
                   )}
-                </button>
-              </form>
-            </div>
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-primary hover:bg-white text-page text-sm font-medium rounded-sm transition-colors disabled:opacity-50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                {status === 'sending' ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-page/40 border-t-page rounded-full animate-spin" aria-hidden="true" />
+                    <span className="font-mono text-xs">Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={14} aria-hidden="true" />
+                    <span>Send Message</span>
+                  </>
+                )}
+              </button>
+            </form>
           </div>
 
         </div>
-
       </div>
     </section>
   );
 }
-

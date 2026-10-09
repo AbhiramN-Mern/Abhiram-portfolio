@@ -6,7 +6,7 @@ import ProjectDetail from './pages/ProjectDetail';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col justify-between">
+    <div className="min-h-screen bg-page text-primary flex flex-col justify-between selection:bg-terracotta/20 selection:text-primary">
       <Navbar />
       <main id="main-content" className="flex-1">
         <Routes>

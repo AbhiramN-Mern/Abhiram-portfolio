@@ -4,55 +4,53 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 border-t border-[#1e293b]"
+      className="py-24 sm:py-28 border-b border-border"
       aria-label="Technical Skills"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="mb-12">
-          <span className="section-subtitle">Skills</span>
-          <h2 className="text-3xl font-bold text-white mt-1">
+        <div className="pb-8 border-b border-border mb-12">
+          <span className="font-mono text-xs uppercase tracking-wider text-secondary font-medium">
+            Skills
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-medium text-primary mt-2 tracking-tight">
             Technical Stack
           </h2>
-          <p className="text-slate-400 mt-2 text-base max-w-2xl">
+          <p className="text-secondary mt-3 text-base max-w-2xl leading-relaxed">
             Technologies, libraries, and tools I use to build scalable full-stack applications.
           </p>
         </div>
 
-        {/* Single Clean Skills Container */}
-        <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6 sm:p-8 shadow-sm">
-          <div className="divide-y divide-[#1e293b]">
-            {skills.map((category, index) => (
+        {/* Structured Editorial Specification Table */}
+        <div className="divide-y divide-border border-t border-border">
+          {skills.map((category) => {
+            return (
               <div
                 key={category.label}
-                className={`flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8 ${
-                  index === 0 ? 'pb-6' : index === skills.length - 1 ? 'pt-6' : 'py-6'
-                }`}
+                className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline"
               >
-                {/* Category Label */}
-                <div className="md:w-56 flex-shrink-0">
-                  <span className="text-sm font-semibold text-slate-200 uppercase tracking-wide">
+                {/* Category Column (4 cols) */}
+                <div className="md:col-span-4 flex items-baseline">
+                  <h3 className="font-sans text-sm font-medium uppercase tracking-wider text-primary">
                     {category.label}
-                  </span>
+                  </h3>
                 </div>
 
-                {/* Skills list inside this category */}
-                <div className="flex flex-wrap gap-2 flex-1">
+                {/* Skills Row (8 cols) */}
+                <div className="md:col-span-8 flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium text-slate-200 bg-[#162032] border border-[#222f44] hover:border-emerald-500/40 hover:text-emerald-400 transition-colors"
+                      className="inline-flex items-center px-3 py-1 rounded-sm text-xs font-mono text-primary bg-surface border border-border hover:border-primary/50 hover:text-white transition-colors"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

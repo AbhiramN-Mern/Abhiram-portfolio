@@ -7,41 +7,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          bg: '#0a0d14',
-          surface: '#111726',
-          card: '#131b2e',
-          border: '#1e293b',
-          'border-hover': '#334155',
-          primary: '#10b981',
-          'primary-hover': '#059669',
-          text: '#f1f5f9',
-          muted: '#94a3b8',
-          subtle: '#64748b',
+        page: '#0D0C0B',
+        surface: '#161514',
+        primary: '#EDE8E1',
+        secondary: '#9C9589',
+        accent: {
+          DEFAULT: '#EDE8E1',
+          hover: '#FFFFFF',
         },
-        terminal: {
-          bg: '#0a0d14',
-          card: '#111726',
-          border: '#1e293b',
-          green: '#10b981',
-          'green-dim': '#059669',
-          'green-glow': '#10b981',
-          text: '#f1f5f9',
-          muted: '#94a3b8',
-          comment: '#64748b',
-          accent: '#10b981',
-          red: '#ef4444',
-          yellow: '#f59e0b',
-        }
+        terracotta: {
+          DEFAULT: '#EDE8E1',
+          hover: '#FFFFFF',
+        },
+        border: '#24221F',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
-      boxShadow: {
-        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px -1px rgba(0, 0, 0, 0.25)',
-        'card-hover': '0 4px 16px 0 rgba(0, 0, 0, 0.35)',
-      }
+      maxWidth: {
+        container: '1160px',
+      },
     },
   },
   plugins: [],

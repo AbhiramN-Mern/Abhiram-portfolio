@@ -1,5 +1,5 @@
 import { personal } from '../../data/personal';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
 const highlights = [
   'Full-stack MERN development with strong TypeScript foundations',
@@ -13,98 +13,93 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 border-t border-[#1e293b]"
+      className="py-24 sm:py-28 border-b border-border"
       aria-label="About Abhiram N"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="mb-12">
-          <span className="section-subtitle">About Me</span>
-          <h2 className="text-3xl font-bold text-white mt-1">
+        <div className="pb-8 border-b border-border mb-16">
+          <span className="font-mono text-xs uppercase tracking-wider text-secondary font-medium">
+            About Me
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-medium text-primary mt-2 tracking-tight">
             Background &amp; Approach
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Bio text (7 cols) */}
-          <div className="lg:col-span-7 space-y-5 text-slate-300 text-base leading-relaxed">
-            <p>
-              I am a Full Stack Developer with a solid grounding in the MERN stack and modern TypeScript.
-              My focus is on engineering web systems that are predictable, maintainable, and built on sound architectural patterns rather than quick patches.
-            </p>
-            <p>
-              {personal.bio}
-            </p>
-            <p>
-              {personal.bio2}
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Narrative (7 cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-4 text-primary text-base sm:text-lg leading-relaxed max-w-2xl">
+              <p>
+                I am a Full Stack Developer with a solid grounding in the MERN stack and modern TypeScript.
+                My focus is on engineering web systems that are predictable, maintainable, and built on sound architectural patterns rather than quick patches.
+              </p>
+              <p className="text-secondary text-base leading-relaxed">
+                {personal.bio}
+              </p>
+              <p className="text-secondary text-base leading-relaxed">
+                {personal.bio2}
+              </p>
+            </div>
 
-            <div className="pt-4">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-3">
+            {/* Key Engineering Practices */}
+            <div className="pt-8">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-secondary mb-4 pb-2 border-b border-border">
                 Key Engineering Practices
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                    <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span>{item}</span>
+                  <li key={item} className="flex items-start gap-3 text-sm text-secondary">
+                    <CheckCircle2 size={16} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-primary">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Profile Overview Card (5 cols) */}
-          <div className="lg:col-span-5">
-            <div className="bg-[#111726] border border-[#1e293b] rounded-lg p-6 space-y-4 shadow-sm">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 pb-3 border-b border-[#1e293b]">
-                Developer Snapshot
-              </h3>
+          {/* Editorial Snapshot Column (5 cols) */}
+          <div className="lg:col-span-5 bg-surface border border-border p-6 sm:p-8 rounded-sm">
+            <span className="font-mono text-xs uppercase tracking-wider text-secondary font-medium block pb-4 border-b border-border">
+              Developer Snapshot
+            </span>
 
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
-                  <span className="text-slate-400 font-medium">Role</span>
-                  <span className="text-slate-200 font-semibold">{personal.role}</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
-                  <span className="text-slate-400 font-medium">Specialization</span>
-                  <span className="text-slate-200">Full-Stack Web Apps</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
-                  <span className="text-slate-400 font-medium">Architecture</span>
-                  <span className="text-slate-200">Clean Architecture / MVC</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
-                  <span className="text-slate-400 font-medium">Availability</span>
-                  <span className="text-emerald-400 font-medium">{personal.status}</span>
-                </div>
-                <div className="flex justify-between py-1.5 border-b border-[#1e293b]/60">
-                  <span className="text-slate-400 font-medium">Location</span>
-                  <span className="text-slate-200">Kerala, India</span>
-                </div>
+            <div className="divide-y divide-border text-sm">
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <span className="font-mono text-xs text-secondary uppercase">Role</span>
+                <span className="text-primary font-medium text-right">{personal.role}</span>
               </div>
-
-              <div className="pt-3 flex items-center justify-between">
-                <a
-                  href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
-                  download="Abhiram MERN STACK DEVELOPER.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-                  aria-label="Download Full Resume"
-                >
-                  <span>Download Full Resume</span>
-                  <ArrowRight size={14} />
-                </a>
-                <span className="text-xs text-slate-500">PDF Available</span>
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <span className="font-mono text-xs text-secondary uppercase">Specialization</span>
+                <span className="text-primary text-right">Full-Stack Web Apps</span>
+              </div>
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <span className="font-mono text-xs text-secondary uppercase">Architecture</span>
+                <span className="text-primary text-right">Clean Architecture / MVC</span>
+              </div>
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <span className="font-mono text-xs text-secondary uppercase">Location</span>
+                <span className="text-primary text-right">Kerala, India</span>
               </div>
             </div>
+
+            <div className="pt-6 mt-4 border-t border-border flex items-center justify-between">
+              <a
+                href="/Abhiram%20MERN%20STACK%20DEVELOPER.pdf"
+                download="Abhiram MERN STACK DEVELOPER.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-primary hover:text-white transition-colors font-medium"
+                aria-label="Download Full Resume"
+              >
+                <span>Download Full Resume</span>
+                <ArrowUpRight size={14} />
+              </a>
+              <span className="font-mono text-[11px] text-secondary">PDF Available</span>
+            </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
