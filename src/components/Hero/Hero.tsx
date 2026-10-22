@@ -34,7 +34,7 @@ export default function Hero() {
                 Abhiram N
               </h1>
               <p className="text-xl sm:text-2xl font-normal text-secondary font-mono">
-                Full-Stack &amp; MERN Developer
+                Full Stack Developer
               </p>
             </div>
 

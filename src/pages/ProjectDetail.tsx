@@ -3,22 +3,46 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { GithubIcon } from '../components/common/Icons';
 import { projects } from '../data/projects';
+import { useSeo } from '../hooks/useSeo';
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === id);
 
-  // Scroll to top on mount or id change, set page title
+  // Build JSON-LD for this project page
+  const projectJsonLd = project
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        '@id': `https://abhiramn.online/projects/${project.id}`,
+        name: project.title,
+        description: project.description,
+        applicationCategory: 'WebApplication',
+        operatingSystem: 'Web Browser',
+        programmingLanguage: project.technologies,
+        url: project.liveUrl ?? `https://abhiramn.online/projects/${project.id}`,
+        codeRepository: project.githubUrl,
+        author: { '@id': 'https://abhiramn.online/#person' },
+        isPartOf: { '@id': 'https://abhiramn.online/#website' },
+      }
+    : undefined;
+
+  useSeo({
+    title: project
+      ? `${project.title} — ${project.subtitle} | Abhiram N`
+      : 'Project Not Found | Abhiram N',
+    description: project
+      ? `${project.description} Built with ${project.stack}.`
+      : 'This project does not exist.',
+    canonical: `https://abhiramn.online/projects/${id ?? ''}`,
+    jsonLd: projectJsonLd,
+  });
+
+  // Scroll to top on mount or id change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    if (project) {
-      document.title = `${project.title} — ${project.subtitle} | Abhiram N`;
-    }
-    return () => {
-      document.title = 'Abhiram N | MERN Stack Developer';
-    };
-  }, [id, project]);
+  }, [id]);
 
   const handleBackToProjects = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
