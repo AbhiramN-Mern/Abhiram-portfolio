@@ -1,7 +1,7 @@
 import { ArrowRight, FileText, Mail } from 'lucide-react';
 
 const coreSkills = [
-  { area: 'Frontend', items: 'React, TypeScript, Tailwind CSS, Redux' },
+  { area: 'Frontend', items: 'React, Next.js, TypeScript, Tailwind CSS, Redux' },
   { area: 'Backend', items: 'Node.js, Express.js, RESTful APIs, WebSockets' },
   { area: 'Databases', items: 'MongoDB, PostgreSQL, Mongoose' },
   { area: 'Architecture & DevOps', items: 'Clean Architecture, Docker, Nginx, AWS EC2' },

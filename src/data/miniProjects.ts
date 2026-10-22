@@ -25,4 +25,10 @@ export const miniProjects: MiniProject[] = [
     description: 'A weather application that displays current weather information based on location.',
     githubUrl: 'https://github.com/AbhiramN-Mern/weather-app',
   },
+  {
+    id: 'nextjs-todo-app',
+    name: 'NextJS Todo App',
+    description: 'A task management web application built with Next.js for creating, organizing, and managing daily tasks.',
+    githubUrl: 'https://github.com/AbhiramN-Mern/NextJS',
+  },
 ];

@@ -7,7 +7,7 @@ export const skills: SkillCategory[] = [
   },
   {
     label: 'Frontend',
-    skills: ['React.js', 'Redux Toolkit', 'Tailwind CSS', 'SCSS', 'Bootstrap', 'EJS', 'HTML5'],
+    skills: ['React.js', 'Next.js', 'Redux Toolkit', 'Tailwind CSS', 'SCSS', 'Bootstrap', 'EJS', 'HTML5'],
   },
   {
     label: 'Backend',

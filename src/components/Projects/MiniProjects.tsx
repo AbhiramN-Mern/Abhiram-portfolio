@@ -22,7 +22,7 @@ export default function MiniProjects() {
           </p>
         </div>
 
-        {/* 4 Mini Projects Grid */}
+        {/* Mini Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {miniProjects.map((project) => (
             <div
